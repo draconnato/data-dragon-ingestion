@@ -3,6 +3,7 @@
 This module defines the abstract base class for implementing Bronze layer
 ingestion processes in the data pipeline.
 """
+
 from abc import ABCMeta, abstractmethod
 from typing import Any
 
@@ -41,6 +42,7 @@ class BronzeBaseIngestion(metaclass=BronzeMetaclass):
         ingestion_timestamp: The timestamp when the ingestion process started.
         endpoint: The source endpoint from which data is being ingested.
     """
+
     ingestion_timestamp: str
 
     def check_required_fields(self) -> None:
@@ -73,7 +75,4 @@ class BronzeBaseIngestion(metaclass=BronzeMetaclass):
         Returns:
             dict: The payload with the 'timestamp' field added.
         """
-        return {
-            "response": payload_respose,
-            "timestamp": self.ingestion_timestamp
-        }
+        return {"response": payload_respose, "timestamp": self.ingestion_timestamp}
